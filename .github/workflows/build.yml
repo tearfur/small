@@ -66,7 +66,7 @@ jobs:
             config: Release,
             cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-10 -DCMAKE_CXX_COMPILER=/usr/bin/g++-10 -DCMAKE_CXX_FLAGS=\"-O2\"",
             sudocmd: "sudo",
-            artifact_name: "Linux",
+            artifact_name: "Ubuntu 20.04",
             cores: 2,
             install_dir: "/usr/local/"
           }
@@ -76,7 +76,7 @@ jobs:
             config: Debug,
             cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/clang-15 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-15 -DCMAKE_C_FLAGS='-fsanitize=address,pointer-compare,pointer-subtract,leak,undefined' -DCMAKE_CXX_FLAGS='-fsanitize=address,pointer-compare,pointer-subtract,leak,undefined'",
             sudocmd: "sudo",
-            artifact_name: "Linux",
+            artifact_name: "Ubuntu 22.04",
             cores: 2,
             install_dir: "/usr/local/"
           }
@@ -86,12 +86,12 @@ jobs:
             config: Release,
             cmake_extra_args: "-DCMAKE_CXX_FLAGS=\"-O2\"",
             sudocmd: "sudo",
-            artifact_name: "MacOSX",
+            artifact_name: "MacOSX 13",
             cores: 4,
             install_dir: "/usr/local/"
           }
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Create Work Dir
         run: mkdir build
       - name: Configure
@@ -127,11 +127,7 @@ jobs:
         working-directory: ./build
         run: ${{ matrix.config.sudocmd }} cpack
       - name: Archive Packages
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Binary Packages ${{ matrix.config.artifact_name }}
-          path: build/small-?.?.?-*.*
-      - name: Archive Installer Packages as is
-        uses: kittaakos/upload-artifact-as-is@v0
-        with:
           path: build/small-?.?.?-*.*
