@@ -81,12 +81,12 @@ jobs:
             install_dir: "/usr/local/"
           }
           - {
-            name: "MacOSX/12/Static/X64/Release",
-            os: macos-12,
+            name: "MacOSX/14/Static/X64/Release",
+            os: macos-14,
             config: Release,
             cmake_extra_args: "-DCMAKE_CXX_FLAGS=\"-O2\"",
             sudocmd: "sudo",
-            artifact_name: "MacOSX 13",
+            artifact_name: "MacOSX 14",
             cores: 4,
             install_dir: "/usr/local/"
           }
