@@ -61,12 +61,11 @@ jobs:
             install_dir: "C:/Program Files/small"
           }
           - {
-            name: "Ubuntu/20.04/Static/X64/Release",
-            os: ubuntu-20.04,
+            name: "Ubuntu/22.04/Static/X64/Release",
+            os: ubuntu-22.04,
             config: Release,
-            cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/gcc-10 -DCMAKE_CXX_COMPILER=/usr/bin/g++-10 -DCMAKE_CXX_FLAGS=\"-O2\"",
             sudocmd: "sudo",
-            artifact_name: "Ubuntu 20.04",
+            artifact_name: "Ubuntu 22.04",
             cores: 2,
             install_dir: "/usr/local/"
           }
@@ -76,7 +75,7 @@ jobs:
             config: Debug,
             cmake_extra_args: "-DCMAKE_C_COMPILER=/usr/bin/clang-15 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-15 -DCMAKE_C_FLAGS='-fsanitize=address,pointer-compare,pointer-subtract,leak,undefined' -DCMAKE_CXX_FLAGS='-fsanitize=address,pointer-compare,pointer-subtract,leak,undefined'",
             sudocmd: "sudo",
-            artifact_name: "Ubuntu 22.04",
+            artifact_name: "Ubuntu 22.04 fsanitize",
             cores: 2,
             install_dir: "/usr/local/"
           }
